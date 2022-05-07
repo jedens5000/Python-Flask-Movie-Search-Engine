@@ -1,0 +1,57 @@
+{% extends "index.html" %}
+
+{% block movies %}
+
+<!-- <div class="col-sm mb-3">
+  <div class="card" style="width: 18rem;">
+    <img src="{{movie.Poster}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{movie.Title}}</h5>
+      <p class="card-text">{{movie.Year}}
+      </p>
+    </div>
+  </div>
+</div> -->
+
+<!-- <div class="card mb-3" style="max-width: auto;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{movie.Poster}}" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{movie.Title}}</h5>
+        <p class="card-text"><small class="text-muted">{{movie.Year}}</small></p>
+        <h6 class="card-title">Director: <small class="text-muted">{{movie.Director}}</small></h6>
+        <h6 class="card-title">Starring: <small class="text-muted">{{movie.Actors}}</small></h6>
+        <p class="card-text">{{movie.Plot}}</p>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="col-sm-3 mb-3" style="max-width: auto;">
+  <img src="{{movie.Poster}}" class="img-thumbnail" alt="movie poster">
+</div>
+
+<div class="col-lg mb-3">
+  <div class="card">
+
+    <div class="card-body">
+      <h5 class="card-title">{{movie.Title}} ({{movie.Year}})</h5>
+      <h6 class="card-title">Director: <small class="text-muted">{{movie.Director}}</small></h6>
+      <h6 class="card-title">Starring: <small class="text-muted">{{movie.Actors}}</small></h6>
+      <p class="card-text">{{movie.Plot}}</p>
+      <p class="card-text mb-1"><small class="text-muted">Rating: {{movie.imdbRating}} &nbsp;&nbsp; Runtime:
+          {{movie.Runtime}} &nbsp;&nbsp; Rated:
+          {{movie.Rated}}</small></p>
+      <p class="card-text"><small class="text-muted">{{movie.Genre}}</small></p>
+
+      <a class="btn btn-primary" href="{{url_for('add_to_favorite', title=movie.Title)}}">Add to Favorites</a>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

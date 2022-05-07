@@ -1,0 +1,24 @@
+{% extends "index.html" %}
+
+{% block movies %}
+
+{% for value in favorite_list %}
+
+<div class="col-lg-12 mb-3">
+  <div class="card">
+    <div class="card-body">
+      <!-- <div class="col-sm-3 mb-3" style="max-width: auto;">
+        <img src="{{value.Poster}}" class="img-thumbnail" alt="movie poster">
+      </div> -->
+      <p class="card-text">{{value}}
+      </p>
+      <a href="{{url_for('single_movie',title=value)}}" class="btn btn-primary">Check out</a>
+      <a href="{{url_for('remove_from_list',title=value)}}" class="btn btn-danger">Remove</a>
+    </div>
+  </div>
+</div>
+
+
+{% endfor %}
+
+{% endblock %}
