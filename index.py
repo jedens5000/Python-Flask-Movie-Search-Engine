@@ -3,10 +3,6 @@ import requests
 
 app = Flask(__name__)
 app.secret_key = "knikgpad4154198"
-# @app.route("/")
-# def main():
-#   data = {"website": "CalmAndCode.com"}
-#   return data
 
 
 @app.route("/")
