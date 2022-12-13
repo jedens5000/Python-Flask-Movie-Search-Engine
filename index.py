@@ -1,28 +1,30 @@
 from flask import Flask, redirect, render_template, url_for, request, session, redirect, flash
 import requests
+import os
+
 
 app = Flask(__name__)
-app.secret_key = "knikgpad4154198"
-
+app.secret_key = os.getenv("SECRET_KEY")
+apiKey = os.getenv("API_KEY")
 
 @app.route("/")
 def main():
     rawData = requests.get(
-        "http://www.omdbapi.com/?apikey=cee51aed&s=batman")
+        "http://www.omdbapi.com/?apikey=" + apiKey + "&s=punk")
     movies = rawData.json()
     return render_template("home.html", movies=movies)
 
 
 @app.route("/<title>")
 def movies_by_title(title):
-    rawData = requests.get("http://www.omdbapi.com/?apikey=cee51aed&s="+title)
+    rawData = requests.get("http://www.omdbapi.com/?apikey=" + apiKey + "&s="+title)
     movies = rawData.json()
     return render_template("home.html", movies=movies)
 
 
 @app.route("/single_movie/<title>")
 def single_movie(title):
-    rawData = requests.get("http://www.omdbapi.com/?apikey=cee51aed&t="+title)
+    rawData = requests.get("http://www.omdbapi.com/?apikey=" + apiKey + "&t="+title)
     movie = rawData.json()
     return render_template("single_movie.html", movie=movie)
 
@@ -38,10 +40,10 @@ def search_by_title():
     year = request.form["year"]
     if year != "":
         rawData = requests.get(
-            "http://www.omdbapi.com/?apikey=cee51aed&t="+title+"&y="+year)
+            "http://www.omdbapi.com/?apikey=" + apiKey + "&t="+title+"&y="+year)
     else:
         rawData = requests.get(
-            "http://www.omdbapi.com/?apikey=cee51aed&t="+title)
+            "http://www.omdbapi.com/?apikey=" + apiKey + "&t="+title)
     movie = rawData.json()
     return render_template("search.html", movie=movie)
 
